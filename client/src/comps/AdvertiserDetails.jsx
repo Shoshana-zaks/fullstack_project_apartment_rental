@@ -4,13 +4,15 @@ import axios from 'axios';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
+const baseURL = process.env.REACT_APP_API_BASE_URL || "http://localhost:3001/";
+
 const AdvertiserDetails = ({ advertiserId, open, onClose }) => {
   const [advertiserDetails, setAdvertiserDetails] = useState(null);
 
   useEffect(() => {
     const fetchAdvertiser = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/advertiser/${advertiserId}`);
+        const response = await axios.get(`${baseURL}advertiser/${advertiserId}`);
         setAdvertiserDetails(response.data); 
       } catch (error) {
         console.error('Error fetching advertiser:', error);

@@ -15,7 +15,7 @@ import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 // import { useEffect } from 'react';
 
-
+const baseURL = process.env.REACT_APP_API_BASE_URL || "http://localhost:3001/";
 
 export const MyDialog = ({apartment}) => {
   const navigate = useNavigate();
@@ -50,7 +50,7 @@ export const MyDialog = ({apartment}) => {
     try {
       const token = localStorage.getItem('Authorization');
       const id= apartment._id;
-      const response = await fetch(`http://localhost:3001/apartment/remove/${id}`, {
+      const response = await fetch(`${baseURL}apartment/remove/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`

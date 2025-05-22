@@ -8,6 +8,8 @@ import SelectCity from "./SelectCity";
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+const baseURL = process.env.REACT_APP_API_BASE_URL || "http://localhost:3001/";
+
 const AddApartment = () => {
     const location = useLocation();
     const topRef = useRef(null);
@@ -38,8 +40,8 @@ const AddApartment = () => {
     const [errorSnackbarOpen, setErrorSnackbarOpen] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
 
-    const categoryUrl = "http://localhost:3001/category";
-    const cityUrl = "http://localhost:3001/city";
+    const categoryUrl = baseURL + "category";
+    const cityUrl = baseURL + "city";
 
     useEffect(() => {
         console.log("useEffect בעמוד AddApartment רץ");
@@ -207,8 +209,8 @@ const AddApartment = () => {
 
             const method = apartment ? "PUT" : "POST";
             const url = apartment
-                ? `http://localhost:3001/apartment/editApartment/${apartment._id}`
-                : `http://localhost:3001/apartment/addApartment`;
+                ? `${baseURL}apartment/editApartment/${apartment._id}`
+                : `${baseURL}apartment/addApartment`;
 
             const response = await fetch(url, {
                 method,
@@ -243,7 +245,7 @@ const AddApartment = () => {
             setIsSubmitting(false);
         }
     }, [formData, apartment, navigate]);
-    
+
     return (
         <Box sx={{ maxWidth: 600, mx: "auto", mt: 4 }} ref={topRef}>
             <Card>

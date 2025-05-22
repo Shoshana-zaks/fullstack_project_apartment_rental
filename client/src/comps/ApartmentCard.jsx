@@ -7,6 +7,8 @@ import ShareIcon from '@mui/icons-material/Share'; // אייקון שיתוף
 import { useNavigate } from 'react-router-dom'; // ניווט
 import AdvertiserDetails from './AdvertiserDetails';
 
+const baseURL = process.env.REACT_APP_API_BASE_URL || "http://localhost:3001/";
+
 const ApartmentCard = ({ apartment, isOwner }) => {
   const [openDialog, setOpenDialog] = useState(false);
   const navigate = useNavigate();
@@ -28,7 +30,7 @@ const ApartmentCard = ({ apartment, isOwner }) => {
   const handleDelete = async (apartmentId) => {
     const token = localStorage.getItem('Authorization');
     try {
-      const response = await fetch(`http://localhost:3001/apartment/remove/${apartmentId}`, {
+      const response = await fetch(`${baseURL}apartment/remove/${apartmentId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

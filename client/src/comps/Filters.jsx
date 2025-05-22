@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Grid, TextField, MenuItem, Typography, Slider, Button } from '@mui/material';
 
+const baseURL = process.env.REACT_APP_API_BASE_URL || "http://localhost:3001/";
+
 const Filters = React.memo(({ onFilterChange }) => {
   const [priceLimits, setPriceLimits] = useState({ min: 0, max: 10000 });
   const [cities, setCities] = useState([]);
@@ -18,9 +20,9 @@ const Filters = React.memo(({ onFilterChange }) => {
     const fetchFilters = async () => {
       try {
         const [citiesRes, categoriesRes, apartmentsRes] = await Promise.all([
-          axios.get('http://localhost:3001/city'),
-          axios.get('http://localhost:3001/category'),
-          axios.get('http://localhost:3001/apartment')
+  axios.get(`${baseURL}city`),
+  axios.get(`${baseURL}category`),
+  axios.get(`${baseURL}apartment`)
         ]);
 
         setCities(citiesRes.data);

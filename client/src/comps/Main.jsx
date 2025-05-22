@@ -6,6 +6,8 @@ import { Grid, Container, Typography, CircularProgress, Box } from '@mui/materia
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+const baseURL = process.env.REACT_APP_API_BASE_URL || "http://localhost:3001/";
+
 const Main = () => {
   console.log("Main component rendered");
   const [displayedApartments, setDisplayedApartments] = useState([]);
@@ -34,9 +36,9 @@ const Main = () => {
       if (filters.minPrice !== undefined) queryParams.append('minPrice', filters.minPrice);
       if (filters.maxPrice !== undefined) queryParams.append('maxPrice', filters.maxPrice);
 
-      console.log(`fetchAllApartments - Request URL: http://localhost:3001/apartment?${queryParams.toString()}`);
+      console.log(`fetchAllApartments - Request URL: ${baseURL}apartment?${queryParams.toString()}`);
 
-      const response = await axios.get(`http://localhost:3001/apartment?${queryParams.toString()}`);
+      const response = await axios.get(`${baseURL}apartment?${queryParams.toString()}`);
       if (response.data) {
         console.log("fetchAllApartments - All apartments received:", response.data);
         setDisplayedApartments(response.data);
@@ -61,7 +63,7 @@ const Main = () => {
 
       if (advertiserId) {
         console.log("fetchUserApartments - Fetching user apartments for ID:", advertiserId);
-        const response = await axios.get(`http://localhost:3001/apartment/getByAdvertiserId/${advertiserId}`, {
+        const response = await axios.get(`${baseURL}apartment/getByAdvertiserId/${advertiserId}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('Authorization')}`
           }
