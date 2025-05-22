@@ -16,10 +16,10 @@ const port = process.env.PORT || 3001;
 app.use(express.json({ limit: '10mb' }));
 app.use(cors());
 
-app.use('category', categoryRouter);
-app.use('city', cityRouter);
-app.use('advertiser', advertiserRouter);
-app.use('apartment', apartmentRouter);
+app.use('/category', categoryRouter);
+app.use('/city', cityRouter);
+app.use('/advertiser', advertiserRouter);
+app.use('/apartment', apartmentRouter);
 
 console.log(process.env.URI);
 mongoose.connect(process.env.URI)

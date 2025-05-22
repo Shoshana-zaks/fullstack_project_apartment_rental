@@ -20,9 +20,9 @@ const App = () => {
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <Routes>
-          <Route path="/" element={<Main />} /> 
-          <Route path="/login" element={<Login />} />
-          <Route path="/addApartment" element={<AddApartment />} />
+          <Route path="" element={<Main />} /> 
+          <Route path="login" element={<Login />} />
+          <Route path="addApartment" element={<AddApartment />} />
         </Routes>
       </ThemeProvider>
     </BrowserRouter>
