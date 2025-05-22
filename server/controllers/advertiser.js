@@ -1,4 +1,4 @@
-import Advertiser from "../models/Advertiser.js";
+import Advertiser from "../models/advertiser.js";
 import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken';
 
