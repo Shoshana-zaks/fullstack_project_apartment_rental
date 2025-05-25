@@ -2,6 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const baseUrl = process.env.REACT_APP_API_BASE_URL || 'http://localhost:3001/';
+console.log("REACT_APP_API_BASE_URL (useGetAxios.js):", process.env.REACT_APP_API_BASE_URL);
+console.log("Calculated baseUrl (useGetAxios.js):", baseUrl);
+
 
 export const useGetAxios = (url) => {
     const [data, setData] = useState([]);

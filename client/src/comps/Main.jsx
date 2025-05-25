@@ -10,6 +10,8 @@ const baseURL = process.env.REACT_APP_API_BASE_URL || "http://localhost:3001/";
 
 const Main = () => {
   console.log("Main component rendered");
+  console.log("REACT_APP_API_BASE_URL (Main.jsx):", process.env.REACT_APP_API_BASE_URL);
+  console.log("Calculated baseURL (Main.jsx):", baseURL);
   const [displayedApartments, setDisplayedApartments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const isLoggedIn = !!localStorage.getItem('Authorization');
